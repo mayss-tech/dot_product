@@ -1,0 +1,50 @@
+// procedure which calculates the dot(scalar) product of v1 and v2
+PROCEDURE dot_product(VAR ps:FLOAT)
+VAR
+    v1,v2 : ARRAY_OF FLOAT[N];
+    i,N:INTEGER;
+BEGIN
+    ps:=0;
+    FOR i FROM 0 TO N-1 DO
+        ps:=ps+v1[i]*v2[i];
+    END_FOR
+END
+// function which calculates the dot(scalar) product of v1 and v2
+FUNCTION dot_product() : FLOAT
+VAR
+    v1,v2 : ARRAY_OF FLOAT[N];
+    i,N:INTEGER;
+    ps:FLOAT;
+BEGIN
+    ps:=0;
+    FOR i FROM 0 TO N-1  DO
+        ps:=ps+v1[i]*v2[i];
+    END_FOR
+    RETURN ps;
+END
+// algorithm dot_product
+ALGORITHM dot_product
+VAR
+    v1,v2 : ARRAY_OF FLOAT[N];
+    N,i:INTEGER;
+    ps:FLOAT;
+BEGIN
+    Read(N);
+    FOR i FROM 1 TO N-1 DO
+        Read(v1[i]);
+    END_FOR
+    FOR i FROM 1 TO N-1 DO
+        Read(v2[i]);
+    END_FOR
+//test if two vectors are orthogonal or not
+// call the procedure 
+    dot_product(ps);
+// or call the function
+    ps:=dot_product();
+    Write(ps=);
+    IF (ps==0) THEN
+        Write(v1 and v2 are orthogonal);
+    ELSE
+        Write(v1 and v2 are not orthogonal);
+    END_IF 
+END
